@@ -25,7 +25,6 @@
 	  # COMMAND LINE TOOLS
       pkgs.git
       pkgs.neovim
-	  pkgs.lazygit
 	  pkgs.stow
 	  pkgs.yazi
 	  pkgs.ripgrep
