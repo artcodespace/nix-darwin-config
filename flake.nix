@@ -21,7 +21,6 @@
 	  # TERMINAL
       pkgs.wezterm
 	  pkgs.tmux
-	  pkgs.starship
 	  # COMMAND LINE TOOLS
       pkgs.git
       pkgs.neovim
