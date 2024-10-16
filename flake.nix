@@ -26,14 +26,8 @@
 	  pkgs.fzf
 	  pkgs.fd
 	  # LANGUAGE SUPPORT
-	  pkgs.lua-language-server
-	  pkgs.stylua
 	  pkgs.nodejs_22
-	  pkgs.nodePackages.typescript-language-server
-	  pkgs.nodePackages.eslint
-	  pkgs.prettierd
 	  pkgs.nodePackages.nodemon
-	  pkgs.vscode-langservers-extracted
         ];
 
       # Auto upgrade nix package and the daemon service.
