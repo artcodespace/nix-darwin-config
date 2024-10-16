@@ -20,7 +20,6 @@
       pkgs.rectangle
 	  # COMMAND LINE TOOLS
       pkgs.git
-      pkgs.neovim
 	  pkgs.stow
 	  pkgs.yazi
 	  pkgs.ripgrep
