@@ -20,7 +20,6 @@
       pkgs.rectangle
 	  # TERMINAL
       pkgs.wezterm
-	  pkgs.tmux
 	  # COMMAND LINE TOOLS
       pkgs.git
       pkgs.neovim
