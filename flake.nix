@@ -18,8 +18,6 @@
       pkgs.git-credential-manager
       # MAC STUFF
       pkgs.rectangle
-	  # TERMINAL
-      pkgs.wezterm
 	  # COMMAND LINE TOOLS
       pkgs.git
       pkgs.neovim
