@@ -7,28 +7,27 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  let
-    configuration = { pkgs, ... }: {
+  outputs = inputs @ {
+    self,
+    nix-darwin,
+    nixpkgs,
+  }: let
+    configuration = {pkgs, ...}: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ 
-      # THIS IS ALL GOING TO CHANGE WITH HOME MANAGER, JUST SLING EVERYTHING IN FOR NOW
-      pkgs.git-credential-manager
-      # MAC STUFF
-      pkgs.rectangle
-	  # COMMAND LINE TOOLS
-      pkgs.git
-	  pkgs.stow
-	  pkgs.yazi
-	  pkgs.ripgrep
-	  pkgs.fzf
-	  pkgs.fd
-	  # LANGUAGE SUPPORT
-	  pkgs.nodejs_22
-	  pkgs.nodePackages.nodemon
-        ];
+      environment.systemPackages = [
+        # MAC STUFF
+        pkgs.rectangle
+        # COMMAND LINE TOOLS
+        pkgs.stow
+        pkgs.yazi
+        pkgs.ripgrep
+        pkgs.fzf
+        pkgs.fd
+        # LANGUAGE SUPPORT
+        pkgs.nodejs_22
+        pkgs.nodePackages.nodemon
+      ];
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
@@ -38,7 +37,7 @@
       nix.settings.experimental-features = "nix-command flakes";
 
       # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on catalina
+      programs.zsh.enable = true; # default shell on catalina
       # programs.fish.enable = true;
 
       # Set Git commit hash for darwin-version.
@@ -58,21 +57,21 @@
       # system stuff
       system.defaults = {
         dock = {
-            autohide = true;
-            mru-spaces = false;
-            persistent-apps = [
-              "${pkgs.wezterm}/Applications/Wezterm.app"
-              "${pkgs.rectangle}/Applications/Rectangle.app"
-            ];
+          autohide = true;
+          mru-spaces = false;
+          persistent-apps = [
+            "${pkgs.wezterm}/Applications/Wezterm.app"
+            "${pkgs.rectangle}/Applications/Rectangle.app"
+          ];
         };
         finder = {
-            AppleShowAllExtensions = true;
-            FXPreferredViewStyle = "clmv";
+          AppleShowAllExtensions = true;
+          FXPreferredViewStyle = "clmv";
         };
         NSGlobalDomain = {
-            AppleICUForce24HourTime = true;
-            AppleInterfaceStyle = "Dark";
-            KeyRepeat = 2;
+          AppleICUForce24HourTime = true;
+          AppleInterfaceStyle = "Dark";
+          KeyRepeat = 2;
         };
       };
 
@@ -83,15 +82,14 @@
       };
 
       fonts.packages = [
-        (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
       ];
     };
-  in
-  {
+  in {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [configuration];
     };
 
     # Expose the package set, including overlays, for convenience.
