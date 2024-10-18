@@ -7,9 +7,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nix-darwin,
+    nixpkgs,
   }: let
     configuration = {pkgs, ...}: {
       # To search by name, run: nix-env -qaP | grep wget
