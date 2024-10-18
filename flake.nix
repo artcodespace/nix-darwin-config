@@ -13,6 +13,7 @@
     nixpkgs,
   }: let
     configuration = {pkgs, ...}: {
+      # TODO >>> extract this into a configuration.nix file
       # To search by name, run: nix-env -qaP | grep wget
       environment.systemPackages = [
         # Fix for poor mac default window management
