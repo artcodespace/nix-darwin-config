@@ -18,8 +18,6 @@
         # Fix for poor mac default window management
         pkgs.rectangle
         pkgs.yabai
-        # COMMAND LINE TOOLS
-        pkgs.fd
         # LANGUAGE SUPPORT
         pkgs.nodejs_22
         pkgs.nodePackages.nodemon
