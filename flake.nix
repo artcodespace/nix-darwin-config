@@ -13,15 +13,12 @@
     nixpkgs,
   }: let
     configuration = {pkgs, ...}: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
+      # To search by name, run: nix-env -qaP | grep wget
       environment.systemPackages = [
-        # MAC STUFF
+        # Fix for poor mac default window management
         pkgs.rectangle
+        pkgs.yabai
         # COMMAND LINE TOOLS
-        pkgs.stow
-        pkgs.yazi
-        pkgs.ripgrep
         pkgs.fzf
         pkgs.fd
         # LANGUAGE SUPPORT
@@ -87,7 +84,7 @@
     };
   in {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#simple
+    # $ darwin-rebuild build --flake .#mac
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
       modules = [configuration];
     };
