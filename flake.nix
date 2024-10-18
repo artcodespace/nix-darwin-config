@@ -18,9 +18,6 @@
         # Fix for poor mac default window management
         pkgs.rectangle
         pkgs.yabai
-        # LANGUAGE SUPPORT
-        pkgs.nodejs_22
-        pkgs.nodePackages.nodemon
       ];
 
       # Auto upgrade nix package and the daemon service.
