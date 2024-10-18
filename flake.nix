@@ -1,5 +1,5 @@
 {
-  description = "First attempt at a Darwin flake";
+  description = "Nix Darwin configuration for mac";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -7,10 +7,9 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ {
+  outputs = {
     self,
     nix-darwin,
-    nixpkgs,
   }: let
     configuration = {pkgs, ...}: {
       # To search by name, run: nix-env -qaP | grep wget
@@ -29,7 +28,6 @@
 
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true; # default shell on catalina
-      # programs.fish.enable = true;
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -38,14 +36,12 @@
       # $ darwin-rebuild changelog
       system.stateVersion = 5;
 
-      # EDITED BELOW HERE
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       # sudo via fingerprint
       security.pam.enableSudoTouchIdAuth = true;
 
-      # system stuff
       system.defaults = {
         dock = {
           autohide = true;
@@ -79,7 +75,7 @@
   in {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#mac
-    darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.mac = nix-darwin.lib.darwinSystem {
       modules = [configuration];
     };
 
