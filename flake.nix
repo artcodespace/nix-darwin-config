@@ -19,7 +19,6 @@
         pkgs.rectangle
         pkgs.yabai
         # COMMAND LINE TOOLS
-        pkgs.fzf
         pkgs.fd
         # LANGUAGE SUPPORT
         pkgs.nodejs_22
