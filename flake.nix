@@ -15,6 +15,8 @@
     configuration = {pkgs, ...}: {
       # To search by name, run: nix-env -qaP | grep wget
       environment.systemPackages = [
+        pkgs.git
+        pkgs.vim
         # Fix for poor mac default window management
         pkgs.rectangle
         pkgs.yabai
