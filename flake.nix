@@ -17,7 +17,7 @@
       environment.systemPackages = [
         pkgs.git
         pkgs.vim
-        pkgs.gimp-with-plugins
+        pkgs.gimp
         # Fix for poor mac default window management
         pkgs.rectangle
       ];
