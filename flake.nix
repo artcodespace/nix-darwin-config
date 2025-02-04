@@ -77,7 +77,7 @@
     };
   in {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#mac
+    # $ darwin-rebuild switch --flake .#mac
     darwinConfigurations.mac = nix-darwin.lib.darwinSystem {
       modules = [configuration];
     };
